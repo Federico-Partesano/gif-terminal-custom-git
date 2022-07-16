@@ -9,6 +9,7 @@ import inquirer from "inquirer";
 import { doCommit } from "./commit";
 import { moveBranch } from "./moveBranch";
 import { completePush } from "./completePush";
+import { doRebase } from "./rebase";
 
 export const git: SimpleGit = simpleGit();
 
@@ -30,6 +31,9 @@ export const selectChoice = (action: string) => {
       break;
     case "cpush":
       completePush(true);
+      break;
+    case "rebase":
+      doRebase();
       break;
     default:
       helpMessage();
