@@ -2,14 +2,14 @@ import inquirer from "inquirer";
 
 export const getError = (error: any) => new Error(`${error}`);
 
-let chars = ["  ", " | ", " / ", " ⎯ "];
+let chars = ['\/', "|", "/", "⎯"];
 
 export const loader = async () => {
   const ui = new inquirer.ui.BottomBar();
   let stateLoader = 0;
 
   const interval = setInterval(() => {
-    ui.updateBottomBar(`Loading \x1b[33m${chars[stateLoader]}`);
+    ui.updateBottomBar(`\x1b[33mLoading ${chars[stateLoader]}`);
     if (stateLoader >= 3) {
       stateLoader = 0;
     } else {

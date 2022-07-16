@@ -6,7 +6,7 @@ import { loader } from "./utils";
 
 export const completePush = async () => {
   await doCommit(true);
-   const {interval, updateBottomBar} = await loader();
+   const {updateBottomBar} = await loader();
 
    await git.push();
    updateBottomBar("\x1b[32mSuccessfully pushed!")
