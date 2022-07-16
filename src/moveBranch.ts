@@ -16,6 +16,7 @@ export const moveBranch = async () => {
       "\x1b[31m",
       "You can't change branch because you have local changes \n"
     );
+    await git.fetch(["-a"]);
     const { reptile } = await inquirer.prompt([
       {
         type: "confirm",
