@@ -31,7 +31,7 @@ export const moveBranch = async () => {
   const listBranch = all
     .filter((branch) => branch !== current)
     .map((branch) =>
-      branch.includes("remotes" ? branch.split("/").at(-1)! : branch)
+      branch.includes("remotes") ? branch.split("/").at(-1)! : branch
     );
 
   const { reptile } = await inquirer.prompt([
