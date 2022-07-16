@@ -1,5 +1,5 @@
 {
-  "name": "gif",
+  "name": "gati",
   "version": "1.0.1",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",

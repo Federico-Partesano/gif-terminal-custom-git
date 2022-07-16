@@ -10,7 +10,7 @@ export const loader = async () => {
   let stateLoader = 0;
 
   const interval = setInterval(() => {
-    ui.updateBottomBar(`\x1b[33mLoading ${emoji.get(`clock${stateLoader}`)}`);
+    ui.updateBottomBar(`\x1b[33mLoading ${chars[stateLoader]}`);
     if (stateLoader >= 3) {
       stateLoader = 0;
     } else {
@@ -25,3 +25,6 @@ export const loader = async () => {
 
   return { interval, updateBottomBar };
 };
+
+
+export const sleep = () => new Promise((resolve, eject) => {setTimeout(() => {resolve(undefined)}, 3000)})

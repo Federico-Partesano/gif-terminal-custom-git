@@ -1,35 +1,17 @@
-# gcompr
-## Based on [tpstart](https://github.com/Iranon/tpstart)
+# gati
+### A node cli for easily push, commit and checkout git with conventional syntax <type>(<scope>): <subject>.
 
-### A node.js script to generate your TypeScript project.
+#### - Usage: gati {move | cpush | commit}
 
-### TypeScript required! [ npm install -g typescript ]
-
-#### - Usage: gcompr {ComponentName} {Flag}
-
-##### You can run -> npx tpstart {ComponentName} {Flag}
+##### You can run -> npx gati  {move | cpush | commit}
 
 It requires the project name as the first argument and accepts subsequent flags.
 
-Admitted flags are:
-* '-css': create component with css file
-* '-scss':  create component with scss file
-* '-tsx':  create component with tsx file
-* '-jsx':  create component with jsx file
-* '-i':  create files component inside current path
+commands:
+* "move: chechout to another branch": "move",
+* "cpush: do a git add . && guided commit and push": "cpush",
+* "commit: do a guided commit": "commit",
 
-* default: create component with scss and tsx files in a dir with component name";
-
-The output scaffolding has the following structure:
-
->NAME_COMPONENT/
->
->├── NAME_COMPONENT.(tsx | jsx)
->
->├── NAME_COMPONENT.(css | scss)
-
-The project is configured in order to be compiled with webpack in a bundle.js file.
-  
 <sub>
   If you clone the repository run "npm i" to install dependencies.
 </sub>
