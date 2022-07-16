@@ -12,6 +12,7 @@ import { completePush } from "./completePush";
 
 export const git: SimpleGit = simpleGit();
 
+
 // var ui = new inquirer.ui.BottomBar();
 
 //const args = process.argv.slice(2); // command line arguments start at position 2
