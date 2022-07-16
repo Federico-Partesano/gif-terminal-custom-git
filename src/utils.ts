@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import emoji from "node-emoji";
 
 export const getError = (error: any) => new Error(`${error}`);
 
@@ -9,7 +10,7 @@ export const loader = async () => {
   let stateLoader = 0;
 
   const interval = setInterval(() => {
-    ui.updateBottomBar(`\x1b[33mLoading ${chars[stateLoader]}`);
+    ui.updateBottomBar(`\x1b[33mLoading ${emoji.get(`clock${stateLoader}`)}`);
     if (stateLoader >= 3) {
       stateLoader = 0;
     } else {

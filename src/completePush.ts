@@ -7,7 +7,7 @@ import emoji from "node-emoji"
 export const completePush = async () => {
   await doCommit(true);
    const {updateBottomBar} = await loader();
-  const aries = emoji.get("clock1")
+  const aries = emoji.get("aries")
    await git.push();
    updateBottomBar(`\x1b[32mSuccessfully pushed! ${aries}`)
 };
