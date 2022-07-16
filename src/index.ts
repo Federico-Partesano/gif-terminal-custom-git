@@ -33,6 +33,9 @@ const generateScaffolding = async () => {
     case "cpush":
       completePush();
       break;
+    case "checkout":
+      moveBranch();
+      break;
   }
 };
 

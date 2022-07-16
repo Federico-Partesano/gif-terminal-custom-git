@@ -4,7 +4,7 @@ import { git } from ".";
 const answerType = async () => {
   const { reptile } = await inquirer.prompt([
     {
-      type: "list",
+      type: "rawlist",
       name: "reptile",
       message: "What is it?",
       choices: ["feat", "fix", "refactor"],
