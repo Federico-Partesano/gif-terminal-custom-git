@@ -4,6 +4,9 @@ import { git } from ".";
 import { COLORS } from "./colors";
 import { doCommit } from "./commit";
 import { completePush } from "./completePush";
+import chalk from "chalk";
+import emoji from "node-emoji";
+import { loader } from "./utils";
 
 const checkCanChangeBranch = async (): Promise<boolean> => {
   const { changed } = await git.diffSummary();
@@ -11,11 +14,9 @@ const checkCanChangeBranch = async (): Promise<boolean> => {
 };
 
 export const moveBranch = async () => {
+  const {updateBottomBar} = await loader();
   if (await checkCanChangeBranch()) {
-    console.log(
-      "\x1b[31m",
-      "You can't change branch because you have local changes \n"
-    );
+    updateBottomBar("You can't change branch because you have local changes \n", "red")
     await git.fetch(["-a"]);
     const { reptile } = await inquirer.prompt([
       {
@@ -27,6 +28,7 @@ export const moveBranch = async () => {
     if (!reptile) exit(1);
     await completePush();
   }
+  const {updateBottomBar: updateBottomBarBranches} = await loader("Loading branches");
   const { all, current } = await git.branch(["-a"]);
   const listBranch = all
     .filter((branch) => branch !== current)
@@ -34,14 +36,16 @@ export const moveBranch = async () => {
       branch.includes("remotes") ? branch.split("/").at(-1)! : branch
     );
 
+updateBottomBarBranches("Branches loaded !")
   const { reptile } = await inquirer.prompt([
     {
       type: "rawlist",
       name: "reptile",
       message: "Choose the branch",
-      choices: listBranch,
+      choices: [...new Set(listBranch)],
     },
   ]);
   await git.checkout(reptile);
-  console.log(COLORS.GREEN, "Successfully change branch!");
+  const grinning = emoji.get("grinning");
+  console.log(`${chalk.green("Successfully change branch!")} ${grinning}` );
 };

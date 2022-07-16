@@ -1,6 +1,6 @@
 {
   "name": "gati",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
@@ -41,6 +41,7 @@
     "webpack-shebang-plugin": "^1.1.7"
   },
   "dependencies": {
+    "chalk": "^5.0.1",
     "fp-ts": "^2.12.1",
     "inquirer": "^9.0.1",
     "node-emoji": "^1.11.0",

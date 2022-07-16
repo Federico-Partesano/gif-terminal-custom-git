@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import inquirer from "inquirer";
 import emoji from "node-emoji";
 
@@ -5,12 +6,12 @@ export const getError = (error: any) => new Error(`${error}`);
 
 let chars = ['\/', "|", "/", "⎯"];
 
-export const loader = async () => {
+export const loader = async (text: string = "Loading") => {
   const ui = new inquirer.ui.BottomBar();
   let stateLoader = 0;
 
   const interval = setInterval(() => {
-    ui.updateBottomBar(`\x1b[33mLoading ${chars[stateLoader]}`);
+    ui.updateBottomBar(`${ chalk.yellow(text)} ${chars[stateLoader]}`);
     if (stateLoader >= 3) {
       stateLoader = 0;
     } else {
@@ -18,9 +19,9 @@ export const loader = async () => {
     }
   }, 200);
 
-  const updateBottomBar = (text: string) => {
+  const updateBottomBar = (text: string, color: "red" | "green" = "green") => {
     clearInterval(interval);
-    ui.updateBottomBar(text);
+    ui.updateBottomBar( chalk[color](text));
   };
 
   return { interval, updateBottomBar };
