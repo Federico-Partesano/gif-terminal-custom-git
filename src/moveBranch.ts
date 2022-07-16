@@ -1,7 +1,6 @@
 import inquirer from "inquirer";
 import { exit } from "process";
 import { git } from ".";
-import { COLORS } from "./colors";
 import { doCommit } from "./commit";
 import { completePush } from "./completePush";
 import chalk from "chalk";
