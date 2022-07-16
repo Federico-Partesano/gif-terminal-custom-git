@@ -14,7 +14,7 @@ const checkCanChangeBranch = async (): Promise<boolean> => {
 };
 
 export const moveBranch = async () => {
-  const {updateBottomBar} = await loader();
+  const {updateBottomBar} = await loader("prova");
   if (await checkCanChangeBranch()) {
     updateBottomBar("You can't change branch because you have local changes \n", "red")
     await git.fetch(["-a"]);
