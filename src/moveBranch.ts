@@ -28,7 +28,11 @@ export const moveBranch = async () => {
     await completePush();
   }
   const { all, current } = await git.branch(["-a"]);
-  const listBranch = all.filter((branch) => branch !== current);
+  const listBranch = all
+    .filter((branch) => branch !== current)
+    .map((branch) =>
+      branch.includes("remotes" ? branch.split("/").at(-1)! : branch)
+    );
 
   const { reptile } = await inquirer.prompt([
     {

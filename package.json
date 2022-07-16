@@ -1,6 +1,6 @@
 {
   "name": "gati",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "npm run build && node ./dist/bundle.js cpush",
+    "start": "npm run build && node ./dist/bundle.js move",
     "prepublishOnly": "webpack --mode=production"
   },
   "keywords": [
