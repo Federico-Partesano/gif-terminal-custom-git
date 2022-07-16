@@ -1,25 +1,26 @@
 import inquirer from "inquirer";
 
-export const getError = (error: any) => new Error(`${error}`)
+export const getError = (error: any) => new Error(`${error}`);
 
-let chars = [
-  ' \ ',' | ',' / ',' ⎯ '
+let chars = ["  ", " | ", " / ", " ⎯ "];
 
-]
+export const loader = async () => {
+  const ui = new inquirer.ui.BottomBar();
+  let stateLoader = 0;
 
-export const loader = async() => {
-    const ui = new inquirer.ui.BottomBar();
-    let stateLoader = 0;
+  const interval = setInterval(() => {
+    ui.updateBottomBar(`Loading \x1b[33m${chars[stateLoader]}`);
+    if (stateLoader >= 3) {
+      stateLoader = 0;
+    } else {
+      stateLoader += 1;
+    }
+  }, 200);
 
-    const interval = setInterval(() => {
-        ui.updateBottomBar(`Loading ${chars[stateLoader]}`)
-        if(stateLoader >=3) {
-            stateLoader = 0
-        } else {
-            stateLoader += 1;
-        }
+  const updateBottomBar = (text: string) => {
+    clearInterval(interval);
+    ui.updateBottomBar(text);
+  };
 
-    }, 200);
-
-    return {interval, updateBottomBar: ui.updateBottomBar}
-}
+  return { interval, updateBottomBar };
+};
