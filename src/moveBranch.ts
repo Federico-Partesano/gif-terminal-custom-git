@@ -5,9 +5,8 @@ import { doCommit } from "./commit";
 import { completePush } from "./completePush";
 
 const checkCanChangeBranch = async (): Promise<boolean> => {
-    const {changed} = await git.diffSummary();
-   return Boolean(changed)
-    
+  const { changed } = await git.diffSummary();
+  return Boolean(changed);
 };
 
 export const moveBranch = async () => {
@@ -37,4 +36,5 @@ export const moveBranch = async () => {
       choices: listBranch,
     },
   ]);
+  await git.checkout(reptile);
 };
