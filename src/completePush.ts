@@ -1,8 +1,12 @@
+import inquirer from "inquirer";
 import { git } from ".";
 import { doCommit } from "./commit";
 
 export const completePush = async () => {
   await doCommit(true);
-  await git.push();
-  console.log("\x1b[32m", "Successfully pushed!");
+   const ui = new inquirer.ui.BottomBar();
+   ui.updateBottomBar("Loading...")
+
+   await git.push();
+   ui.updateBottomBar("\x1b[32mSuccessfully pushed!")
 };
