@@ -31,12 +31,12 @@ const addMessage = async () => {
       message: "Insert message of commit: ",
     },
   ]);
-  
+
   return reptile;
 };
 
-export const doCommit = async () => {
+export const doCommit = async (gitAdd: boolean = false) => {
   const messageCommit = `${await answerType()}${await addChangeFiles()}${await addMessage()}`;
-  console.log("🚀 ~ file: commit.ts ~ line 39 ~ doCommit ~ messageCommit", messageCommit)
+  gitAdd && await git.add(".");
   await git.commit(messageCommit);
 };
