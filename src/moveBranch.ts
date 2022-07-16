@@ -36,12 +36,11 @@ export const moveBranch = async () => {
       branch.includes("remotes") ? branch.split("/").at(-1)! : branch
     );
 
-updateBottomBarBranches("Branches loaded ! \n")
+updateBottomBarBranches("Branches loaded! \n")
   const { reptile } = await inquirer.prompt([
     {
       type: "rawlist",
       name: "reptile",
-      prefix: "Branch: ",
       message: "Choose the branch",
       choices: [...new Set(listBranch)],
     },
