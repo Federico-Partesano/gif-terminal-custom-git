@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 
 export const getError = (error: any) => new Error(`${error}`);
 
-let chars = ['\/', '\/', '\/', '\/'];
+let chars = ['\/', "|", "/", "⎯"];
 
 export const loader = async () => {
   const ui = new inquirer.ui.BottomBar();
