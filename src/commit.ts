@@ -20,7 +20,7 @@ const addChangeFiles = async (): Promise<string> => {
   .split("\n")
   .filter(Boolean)
   .map((file) => file.split("/").at(-1));
-  console.log("🚀 ~ file: commit.ts ~ line 20 ~ addChangeFiles ~ changedFiles", changedFiles)
+
   return `(${changedFiles.join(", ")}): `;
 };
 const addMessage = async () => {
@@ -36,5 +36,6 @@ const addMessage = async () => {
 
 export const doCommit = async () => {
   const messageCommit = `${await answerType()}${await addChangeFiles()}${await addMessage()}`;
+  console.log("🚀 ~ file: commit.ts ~ line 39 ~ doCommit ~ messageCommit", messageCommit)
   await git.commit(messageCommit);
 };

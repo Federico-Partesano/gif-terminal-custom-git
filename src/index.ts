@@ -26,10 +26,13 @@ const generateScaffolding = async () => {
   switch (action) {
     case "move":
       moveBranch();
+      break;
     case "commit":
       doCommit();
+      break;
     case "cpush":
       completePush();
+      break;
   }
 };
 
