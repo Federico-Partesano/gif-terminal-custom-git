@@ -5,10 +5,9 @@ import { doCommit } from "./commit";
 import { completePush } from "./completePush";
 
 const checkCanChangeBranch = async (): Promise<boolean> => {
-  const changes = await (await git.diff(["--name-only"]))
-    .split("\n")
-    .filter(Boolean);
-  return Boolean(changes.length);
+    const {changed} = await git.diffSummary();
+   return Boolean(changed)
+    
 };
 
 export const moveBranch = async () => {
