@@ -8,7 +8,7 @@
 It requires the project name as the first argument and accepts subsequent flags.
 
 commands:
-* "move: chechout to another branch": "move",
+* "move: checkout to another branch": "move",
 * "cpush: do a git add . && guided commit and push": "cpush",
 * "commit: do a guided commit": "commit",
 
