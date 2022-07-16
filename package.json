@@ -1,7 +1,7 @@
 {
   "name": "gif",
   "version": "1.0.1",
-  "description": "Generate dir and file for new component React",
+  "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
     "tpstart": "./dist/bundle.js"
@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "npm run build && node ./dist/bundle.js checkout",
+    "start": "npm run build && node ./dist/bundle.js commit",
     "prepublishOnly": "webpack --mode=production"
   },
   "keywords": [

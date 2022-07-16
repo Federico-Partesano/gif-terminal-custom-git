@@ -1,8 +1,28 @@
-export const helpMessage = "-Usage: component name expected as the first argument.\n\
-Admitted flags are:\n\
-'-css': create component with css file\n\
-'-scss':  create component with scss file\n\
-'-jsx':  create component with jsx file\n\
-'-tsx':  create component with tsx file\n\
-'-i':  create files component inside current path\n\
-default: create component with scss and tsx files in a dir with component name";
+import inquirer from "inquirer";
+import { selectChoice } from ".";
+
+const commadsLabel = {
+  "move: chechout to another branch": "move",
+  "cpush: do a git add . && guided commit and push": "cpush",
+  "commit: do a guided commit": "commit",
+} as const
+
+type KeysOfCommandsLabel = keyof typeof commadsLabel
+
+const commands: KeysOfCommandsLabel[] = [
+  "move: chechout to another branch",
+  "cpush: do a git add . && guided commit and push",
+  "commit: do a guided commit",
+];
+
+export const helpMessage = async () => {
+  const { reptile } = await inquirer.prompt([
+    {
+      type: "rawlist",
+      name: "reptile",
+      message: "Choose the branch",
+      choices: commands,
+    },
+  ]);
+  await selectChoice(commadsLabel[reptile as KeysOfCommandsLabel]);
+};

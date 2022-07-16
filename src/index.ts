@@ -12,17 +12,15 @@ import { completePush } from "./completePush";
 
 export const git: SimpleGit = simpleGit();
 
+// var ui = new inquirer.ui.BottomBar();
+
 //const args = process.argv.slice(2); // command line arguments start at position 2
 const action: string = process.argv[2];
 // let flags: string[] = process.argv.slice(3).filter(flag => /^[-][a-zA-Z]$/.test(flag));
 let flags: string[] = process.argv.filter((str) => str[0] === "-");
-console.log("args", process.argv);
-
 const createMkdir: boolean = !flags.some((flag) => flag === "-i");
 
-//- Scaffolding
-//-----------------------------
-const generateScaffolding = async () => {
+export const selectChoice = (action: string) => {
   switch (action) {
     case "move":
       moveBranch();
@@ -33,10 +31,14 @@ const generateScaffolding = async () => {
     case "cpush":
       completePush();
       break;
-    case "checkout":
-      moveBranch();
+    default:
+      helpMessage();
       break;
   }
+};
+//-----------------------------
+const generateScaffolding = async () => {
+  selectChoice(action);
 };
 
 generateScaffolding()

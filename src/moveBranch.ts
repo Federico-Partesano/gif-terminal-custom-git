@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { exit } from "process";
 import { git } from ".";
+import { COLORS } from "./colors";
 import { doCommit } from "./commit";
 import { completePush } from "./completePush";
 
@@ -37,4 +38,5 @@ export const moveBranch = async () => {
     },
   ]);
   await git.checkout(reptile);
+  console.log(COLORS.GREEN, "Successfully change branch!");
 };
