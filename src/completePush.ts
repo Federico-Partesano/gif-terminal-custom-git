@@ -6,12 +6,12 @@ import emoji from "node-emoji";
 import { exit } from "process";
 import chalk from "chalk";
 
-export const completePush = async () => {
+export const completePush = async (exitOnFinish: boolean = false) => {
   await doCommit(true);
   const { updateBottomBar } = await loader();
   const grinning = emoji.get("grinning");
   await git.push();
   updateBottomBar(`${chalk.green("Successfully pushed!")} ${grinning}`);
   console.log(" ");
-  return exit(1);
+  exitOnFinish && exit(1);
 };

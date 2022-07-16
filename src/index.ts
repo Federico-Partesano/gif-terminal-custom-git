@@ -29,7 +29,7 @@ export const selectChoice = (action: string) => {
       doCommit();
       break;
     case "cpush":
-      completePush();
+      completePush(true);
       break;
     default:
       helpMessage();
