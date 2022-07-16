@@ -9,5 +9,5 @@ export const completePush = async () => {
    const {updateBottomBar} = await loader();
 
    await git.push();
-   updateBottomBar("\x1b[32mSuccessfully pushed!")
+   updateBottomBar("\x1b[32mSuccessfully pushed! &#128512")
 };
