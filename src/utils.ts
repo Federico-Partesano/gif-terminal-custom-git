@@ -5,6 +5,8 @@ import { GitError } from "simple-git";
 
 export const getError = (error: any) => new Error(`${error}`);
 
+export const isInArray = (array: string[], item: string) => array.some(itemArray => itemArray === item)
+
 let chars = ['\/', "|", "/", "⎯"];
 
 export const loader = async (text: string = "Loading") => {

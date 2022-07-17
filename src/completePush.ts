@@ -10,8 +10,8 @@ const pushNewBranch = async () => {
   try {
     const {current} = await git.branchLocal();
     await git.push("origin", current, ["--set-upstream"]);
-  } catch (e) {
-    console.log("e", e);
+  } catch (error) {
+    console.log("error", error);
     exit(1)
   }
 };

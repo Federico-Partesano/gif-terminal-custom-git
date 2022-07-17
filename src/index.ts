@@ -10,6 +10,8 @@ import { doCommit } from "./commit";
 import { moveBranch } from "./moveBranch";
 import { completePush } from "./completePush";
 import { doRebase } from "./rebase";
+import { deleteBranches } from "./delete";
+import events from "events"
 
 export const git: SimpleGit = simpleGit();
 
@@ -18,6 +20,7 @@ export const git: SimpleGit = simpleGit();
 //const args = process.argv.slice(2); // command line arguments start at position 2
 const action: string = process.argv[2];
 const option: string = process.argv[3];
+events.EventEmitter.defaultMaxListeners = 0
 
 // let flags: string[] = process.argv.slice(3).filter(flag => /^[-][a-zA-Z]$/.test(flag));
 let flags: string[] = process.argv.filter((str) => str[0] === "-");
@@ -37,6 +40,8 @@ export const selectChoice = (action: string) => {
     case "rebase":
       doRebase(option);
       break;
+    case "delete":
+      deleteBranches();
     default:
       helpMessage();
       break;
