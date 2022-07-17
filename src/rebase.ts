@@ -1,13 +1,36 @@
+import chalk from "chalk";
+import inquirer from "inquirer";
+import { exit } from "process";
 import { GitError } from "simple-git";
 import { git } from "."
+import { completePush } from "./completePush";
+import { checkCanChangeBranch } from "./moveBranch";
 import { colorateLog } from "./utils";
 
 
 export const doRebase = async(branch: string) => {
 // const branches = await git.show("-branch");
 try {
+    if (await checkCanChangeBranch()) {
+        console.log(chalk.red("You can't change branch because you have local changes \n"))
+        await git.fetch(["-a"]);
+        const { reptile } = await inquirer.prompt([
+          {
+            type: "confirm",
+            name: "reptile",
+            message: "You want to a push?",
+          },
+        ]);
+        if (!reptile) exit(1);
+        await completePush();
+      }
     const response  = await git.rebase([branch]);
-    console.log('branches', response)
+    if(response.includes("è aggiornato")){
+        colorateLog(response, "green")
+    } else {
+        console.log('branches', response)
+
+    }
 
 } catch(e) {
     const error = e as any as GitError;

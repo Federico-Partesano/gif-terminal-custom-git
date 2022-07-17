@@ -7,7 +7,7 @@ import chalk from "chalk";
 import emoji from "node-emoji";
 import { loader } from "./utils";
 
-const checkCanChangeBranch = async (): Promise<boolean> => {
+export const checkCanChangeBranch = async (): Promise<boolean> => {
   const { changed } = await git.diffSummary();
   return Boolean(changed);
 };
