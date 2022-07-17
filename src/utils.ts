@@ -29,3 +29,7 @@ export const loader = async (text: string = "Loading") => {
 
 
 export const sleep = () => new Promise((resolve, eject) => {setTimeout(() => {resolve(undefined)}, 3000)})
+
+export const colorateText = (text: string, color: "red" | "yellow" | "green") => chalk[color](text)
+
+export const colorateLog = (text: string, color: "red" | "yellow" | "green") => {console.log(chalk[color](text))}

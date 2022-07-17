@@ -1,10 +1,18 @@
+import { GitError } from "simple-git";
 import { git } from "."
+import { colorateLog } from "./utils";
 
 
 export const doRebase = async(branch: string) => {
 // const branches = await git.show("-branch");
-const response  = await git.rebase([branch]);
-console.log('branches', response)
+try {
+    const response  = await git.rebase([branch]);
+    console.log('branches', response)
+
+} catch(e) {
+    const error = e as any as GitError;
+    colorateLog(error.message, "red")
+}
 
 }
 
