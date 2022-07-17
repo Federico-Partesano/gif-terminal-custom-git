@@ -17,6 +17,8 @@ export const git: SimpleGit = simpleGit();
 
 //const args = process.argv.slice(2); // command line arguments start at position 2
 const action: string = process.argv[2];
+const option: string = process.argv[3];
+
 // let flags: string[] = process.argv.slice(3).filter(flag => /^[-][a-zA-Z]$/.test(flag));
 let flags: string[] = process.argv.filter((str) => str[0] === "-");
 const createMkdir: boolean = !flags.some((flag) => flag === "-i");
@@ -33,7 +35,7 @@ export const selectChoice = (action: string) => {
       completePush(true);
       break;
     case "rebase":
-      doRebase();
+      doRebase(option);
       break;
     default:
       helpMessage();
