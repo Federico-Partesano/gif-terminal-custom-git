@@ -32,7 +32,7 @@ export const selectChoice = (action: string) => {
       moveBranch();
       break;
     case "commit":
-      doCommit();
+      doCommit(true);
       break;
     case "cpush":
       completePush(true);

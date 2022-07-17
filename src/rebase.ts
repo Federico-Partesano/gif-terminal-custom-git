@@ -28,8 +28,9 @@ export const doRebase = async (branch: string) => {
     const response = await git.rebase([branch]);
     if (response.includes("è aggiornato")) {
       colorateLog(response, "green");
-      exit(1);
+      exit(1 === 1 ? 1 : 1);
     }
+
 
     console.log('rebase', response)
   } catch (e) {
