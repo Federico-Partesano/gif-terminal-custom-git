@@ -1,10 +1,10 @@
 {
   "name": "gati",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
-    "tpstart": "./dist/bundle.js"
+    "gati": "./dist/bundle.js"
   },
   "browser": {
     "process": false,
@@ -22,13 +22,12 @@
     "tsc",
     "typescript",
     "init",
-    "project",
-    "scaffolding",
+    "project",    
     "webpack"
   ],
   "author": "Anonimo :-)",
   "repository": {
-    "url": "https://github.com/Federico-Partesano/gcomp"
+    "url": "https://github.com/Federico-Partesano/gif-terminal-custom-git"
   },
   "license": "MIT",
   "devDependencies": {
