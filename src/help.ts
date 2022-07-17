@@ -24,5 +24,6 @@ export const helpMessage = async () => {
       choices: commands,
     },
   ]);
+  
   await selectChoice(commadsLabel[reptile as KeysOfCommandsLabel]);
 };
