@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import inquirer from "inquirer";
 import emoji from "node-emoji";
+import { GitError } from "simple-git";
 
 export const getError = (error: any) => new Error(`${error}`);
 
@@ -27,6 +28,7 @@ export const loader = async (text: string = "Loading") => {
   return { interval, updateBottomBar };
 };
 
+export const isGitError = (error: any): error is GitError => "message" in error
 
 export const sleep = () => new Promise((resolve, eject) => {setTimeout(() => {resolve(undefined)}, 3000)})
 
