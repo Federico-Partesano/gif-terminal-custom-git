@@ -6,10 +6,21 @@ import { completePush } from "./completePush";
 import chalk from "chalk";
 import emoji from "node-emoji";
 import { loader } from "./utils";
+import { GitError } from "simple-git";
 
 export const checkCanChangeBranch = async (): Promise<boolean> => {
-  const { changed } = await git.diffSummary();
-  return Boolean(changed);
+  try {
+    const { changed } = await git.diffSummary();
+    return Boolean(changed);
+  } catch (error){
+    const errorGit = error as any as GitError;
+    if(errorGit.message.includes("warning: Not a git repository")){
+      console.log(chalk.red(`${"warning: Not a git repository"} \n`))
+    } else {
+      console.log(chalk.red(`${errorGit.message} \n`))
+    }
+    exit(1);
+  }
 };
 
 export const moveBranch = async () => {

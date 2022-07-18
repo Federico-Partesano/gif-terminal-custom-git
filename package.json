@@ -1,6 +1,6 @@
 {
   "name": "gati",
-  "version": "1.0.12",
+  "version": "1.0.17",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
@@ -22,7 +22,7 @@
     "tsc",
     "typescript",
     "init",
-    "project",    
+    "project",
     "webpack"
   ],
   "author": "Anonimo :-)",
@@ -44,6 +44,7 @@
     "fp-ts": "^2.12.1",
     "inquirer": "^9.0.1",
     "node-emoji": "^1.11.0",
+    "process": "^0.11.10",
     "simple-git": "^3.10.0",
     "typescript": "^4.7.4"
   }
