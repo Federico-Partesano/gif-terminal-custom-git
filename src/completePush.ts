@@ -1,4 +1,3 @@
-import inquirer from "inquirer";
 import { git } from ".";
 import { doCommit } from "./commit";
 import { isGitError, loader } from "./utils";
@@ -8,11 +7,12 @@ import chalk from "chalk";
 
 const pushNewBranch = async () => {
   try {
-    const {current} = await git.branchLocal();
+    const { current } = await git.branchLocal();
     await git.push("origin", current, ["--set-upstream"]);
+
   } catch (error) {
-    console.log("error", error);
-    exit(1)
+    console.log("ERROR", error);
+    exit(1);
   }
 };
 
@@ -24,6 +24,7 @@ export const completePush = async (exitOnFinish: boolean = false) => {
   try {
     await git.push();
     updateBottomBar(`${chalk.green("Successfully pushed!")} ${grinning}`);
+
   } catch (e) {
     if (isGitError(e)) {
       if (e.message.includes("git push --set-upstream origin")) {

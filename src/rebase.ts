@@ -12,27 +12,29 @@ export const doRebase = async (branch: string) => {
   try {
     if (await checkCanChangeBranch()) {
       console.log(
-        chalk.red("You can't change branch because you have local changes \n")
+        chalk.red("WARNING: You can't change branch because you have local changes.\n")
       );
       await git.fetch(["-a"]);
-      const { reptile } = await inquirer.prompt([
+      const { reply } = await inquirer.prompt([
         {
           type: "confirm",
-          name: "reptile",
-          message: "You want to a push?",
+          name: "reply",
+          message: "Do you want to push?",
         },
       ]);
-      if (!reptile) exit(1);
+      if (!reply) exit(1);
       await completePush();
     }
+    
     const response = await git.rebase([branch]);
+    /* Internationalize */
     if (response.includes("è aggiornato")) {
       colorateLog(response, "green");
       exit(1);
     }
 
+    console.log('rebase', response);
 
-    console.log('rebase', response)
   } catch (e) {
     const error = e as any as GitError;
     colorateLog(error.message, "red");

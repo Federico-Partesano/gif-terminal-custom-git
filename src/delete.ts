@@ -7,20 +7,20 @@ import { colorateLog } from "./utils";
 export const deleteBranches = async() => {
     try{
     const {all} = await git.branchLocal();
-    const { reptile } = await inquirer.prompt([
+    await inquirer.prompt([
         {
           type: "checkbox",
-          name: "reptile",
+          name: "selection",
           message: "Choose the branches",
           choices: [...new Set(all)],
         },
-      ]);
+    ]);
 
     //   await git.deleteLocalBranches(reptile);
-      colorateLog("Succeff", "green")
+      colorateLog("Success", "green")
 
     } catch(error){
-        console.log('error', error)
+        console.log('ERROR', error)
     }
 
 }
