@@ -1,6 +1,6 @@
 {
   "name": "gati",
-  "version": "1.0.30",
+  "version": "1.0.31",
   "description": "command cli for push, commit and checkout git",
   "main": "index.js",
   "bin": {
